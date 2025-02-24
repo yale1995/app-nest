@@ -10,11 +10,17 @@ import { Env } from '../env'
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService<Env, true>) => {
-        const secret = config.get('JWT_SECRET', { infer: true })
+        const privateKey = config.get('JWT_PRIVATE_KEY', { infer: true })
+        const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true })
 
-        return { secret }
+        return {
+          signOptions: { algorithm: 'RS256' },
+          privateKey: Buffer.from(privateKey, 'base64'),
+          publicKey: Buffer.from(publicKey, 'base64'),
+        }
       },
     }),
   ],
+  exports: [JwtModule],
 })
 export class AuthModule {}
