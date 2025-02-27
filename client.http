@@ -29,16 +29,9 @@ POST {{baseURL}}/questions
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
-###
-
-# @name create_question
-POST {{baseURL}}/questions
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
 {
-  "title": "Segunda pergunta",
-  "content": "Conteúdo da segunda pergunta"
+  "title": "Terceira pergunta",
+  "content": "Conteúdo da terceira pergunta"
 }
 
 ###
